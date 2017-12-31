@@ -3465,13 +3465,13 @@ int parse_directive(void) {
     }
 
 #ifdef GB
-    if (d != 2 && d != 4 && d != 8 && d != 16 && d != 32 && d != 64 &&
+    if ((d == 1 && banksize != 256) && d != 2 && d != 4 && d != 8 && d != 16 && d != 32 && d != 64 &&
         d != 128 && d != 256 && d != 72 && d != 80 && d != 96) {
       print_error("Unsupported amount of ROM banks.\n", ERROR_DIR);
       return FAILED;
     }
 
-    if (d == 2)
+    if (d ==1 || d == 2)
       romtype = 0;
     else if (d == 4)
       romtype = 1;
